@@ -9,7 +9,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
                 {items && items.map((item, idx) => <AppListItem key={idx} item={item} />)}
               </div>
             </Route>
+            <Redirect path="*" to="/distributor"></Redirect>
           </Switch>
         </main>
       </CartContext.Provider>
