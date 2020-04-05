@@ -25,7 +25,7 @@ function App() {
             <Route path="/cart">
               {cartService.cartItems && cartService.cartItems.map((cartItem, idx) => (<p>{cartItem.ibu}</p>))}
             </Route>
-            <Route exact path="/">
+            <Route exact path="/distributor">
               <div className="app-header">
                 <div className="app-header--title">
                   <h1>Distributor Name</h1>
