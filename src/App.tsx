@@ -13,7 +13,7 @@ import {
   Redirect
 } from "react-router-dom";
 
-import { Button, Drawer, Table } from 'antd';
+import { Button, Drawer, Table, Divider } from 'antd';
 import { ShoppingCartOutlined } from '@ant-design/icons'
 
 function App() {
@@ -75,8 +75,9 @@ function App() {
                 </div>
               </div>
               <div className="app-content">
-                {items && items.map((item, idx) => <AppListItem key={idx} item={item} />)}
+                <AppListItem item={items} />
               </div>
+              <Divider></Divider>
               <Drawer
                 title="Your cart"
                 placement="right"
