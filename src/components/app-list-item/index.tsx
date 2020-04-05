@@ -1,47 +1,59 @@
 import React from 'react';
-import { ListItem } from '../../core/models/list-item';
 import { BeerListItem } from '../../core/models/beer-list-item';
 
 import ambigue from '../../assets/demo/ambigue.png';
 import { CartContext } from '../../core/services/cartService';
-import { List } from 'antd';
+import { List, Button, Avatar, Divider } from 'antd';
+import { PlusOutlined } from '@ant-design/icons';
+import { useHistory } from 'react-router-dom';
 
 
 interface AppListItemProps {
-    item: Array<ListItem<BeerListItem>>;
+    item: Array<BeerListItem>;
 }
 
 export function AppListItem(props: AppListItemProps) {
+
+    let history = useHistory();
+
+    function onItemClickAction(item: BeerListItem) {
+        history.push(`/beer/${item.id}`);
+    }
+
     return (
         <CartContext.Consumer>{({ cartService, addToCart }) => (
             <List
                 size="large"
                 bordered
                 dataSource={props.item}
-                renderItem={item => <List.Item>{item.name}</List.Item>}>
-                </List>
-        // <div className="app-content-item">
-        //     <img className="app-item-img" src={ambigue} alt="" />
-        //     <div className="app-item-col-wrapper">
-        //         <div className="app-item-row-wrapper">
-        //             <span>{props.item as ListItem<BeerListItem> && props.item.name}</span>
-        //             <span><b>{props.item as ListItem<BeerListItem> && props.item.type}</b></span>
-        //         </div>
-        //         <div className="app-item-row-wrapper">
-        //             <p>IBU {props.item as ListItem<BeerListItem> && parseInt(props.item.ibu)}</p>
-        //             <p>{props.item as ListItem<BeerListItem> && props.item.alcoolPercentage} %</p>
-        //         </div>
-        //         <div className="app-item-row-wrapper">
-        //             <div></div>
-        //             <button onClick={() => {
-        //                 cartService.addItem(props.item)
-        //                 return addToCart();
-        //             }}><i className="las la-plus"></i></button>
-        //         </div>
-        //     </div>
-        // </div>
-    )
-}
+                renderItem={item =>
+                    <List.Item className="test">
+                        <>
+                            <div style={{ display: 'flex' }}>
+                                <Avatar size="large" shape="square" src={ambigue} />
+                                <div className="desc" onClick={() => onItemClickAction(item)}>
+                                    <span>{item.name}</span>
+                                    <Divider type="vertical"></Divider>
+                                    <span><b>{item.type}</b></span>
+                                    <Divider type="vertical"></Divider>
+                                    <span>{item.ibu.toPrecision(2)} <b>IBU</b></span>
+                                    <Divider type="vertical"></Divider>
+                                    <span>{item.alcoolPercentage.toPrecision(2)}% </span>
+                                </div>
+                            </div>
+                            <div>
+                                <Button type="ghost" shape="round" size="small" icon={<PlusOutlined></PlusOutlined>} onClick={() => {
+                                    cartService.addItem(item);
+                                    return addToCart();
+                                }}>1</Button>
+                                <Button type="ghost" shape="round" size="small" icon={<PlusOutlined></PlusOutlined>}>6</Button>
+                                <Button type="ghost" shape="round" size="small" icon={<PlusOutlined></PlusOutlined>}>24</Button>
+                            </div>
+                        </>
+                    </List.Item>}>
+            </List>
+        )
+        }
         </CartContext.Consumer >
     );
 }

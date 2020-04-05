@@ -15,6 +15,21 @@
   h1 {
     margin-bottom: 0;
   }
+
+  &--cart {
+    padding: 1rem;
+  }
+}
+
+.app-content {
+  &--section {
+    margin-bottom: 1rem;
+
+    h3 {
+      font-weight: 600;
+      letter-spacing: 1.1px;
+    }
+  }
 }
 
 .app-content-item {
@@ -44,3 +59,14 @@
   
 }
 
+.test {
+  transition: background .3s;
+}
+
+.test:hover {
+  background: #f5f5f5; 
+}
+
+.desc {
+  cursor: pointer;
+}

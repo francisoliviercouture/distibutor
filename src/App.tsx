@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './App.scss';
-import { ListItem } from './core/models/list-item';
 import { Demo } from './core/environment/demo';
 import { BeerListItem } from './core/models/beer-list-item';
 import { AppListItem } from './components/app-list-item';
@@ -10,16 +9,20 @@ import {
   Switch,
   Route,
   Link,
-  Redirect
+  Redirect,
+  useHistory
 } from "react-router-dom";
 
-import { Button, Drawer, Table, Divider } from 'antd';
+import { Button, Drawer, Table, Divider, Layout, Badge, PageHeader, Descriptions } from 'antd';
+
 import { ShoppingCartOutlined } from '@ant-design/icons'
+import Search from 'antd/lib/input/Search';
+import { BeerDescriptionPage } from './pages/beerDescriptionPage';
 
 function App() {
   const demo = new Demo();
   const [countCart, setCountCart] = useState<number>(0);
-  const [items] = useState<Array<ListItem<BeerListItem>>>(demo.inventory);
+  const [items] = useState<Array<BeerListItem>>(demo.inventory);
   const [visible, setVisible] = useState<boolean>(false);
 
   useEffect(() => {
@@ -64,6 +67,9 @@ function App() {
       <CartContext.Provider value={{ cartService, addToCart: () => setCountCart(cartService.count) }}>
         <main className="App">
           <Switch>
+            <Route path="/beer/:id">
+              <BeerDescriptionPage/>
+            </Route>
             <Route exact path="/distributor">
               <div className="app-header">
                 <div className="app-header--title">
@@ -71,20 +77,35 @@ function App() {
                   <p>Delivery area: Québec, <b>Québec</b></p>
                 </div>
                 <div className="app-header--cart">
-                  <Button type="primary" shape="round" size="large" icon={<ShoppingCartOutlined />} onClick={() => setVisible(true)}>Cart ({countCart})</Button>
+                  <Badge count={countCart}>
+                    <Button type="primary" shape="round" size="large" icon={<ShoppingCartOutlined />} onClick={() => setVisible(true)}>Cart</Button>
+                  </Badge>
                 </div>
               </div>
               <div className="app-content">
-                <AppListItem item={items} />
+                <section className="app-content--section">
+                  <Search placeholder="Search for a beer" onSearch={value => console.log(value)} />
+                </section>
+                <section className="app-content--section">
+                  <h3>Recently added</h3>
+                  <AppListItem item={items} />
+                </section>
+                <section className="app-content--section">
+                  <h3>All beers</h3>
+                  <AppListItem item={items} />
+                </section>
               </div>
-              <Divider></Divider>
               <Drawer
                 title="Your cart"
                 placement="right"
                 onClose={() => setVisible(false)}
                 visible={visible}
               >
-                {cartService.cartItems && cartService.cartItems.map((cartItem, idx) => (<p>{cartItem.ibu}</p>))}
+                {cartService.cartItems && cartService.cartItems.map((cartItem, idx) =>
+                  <>
+                    <p>{cartItem.name}</p>
+                  </>
+                )}
               </Drawer>
             </Route>
             <Redirect path="*" to="/distributor"></Redirect>

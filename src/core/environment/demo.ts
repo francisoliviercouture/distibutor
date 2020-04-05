@@ -1,13 +1,12 @@
 import { BeerListItem } from "../models/beer-list-item";
-import { ListItem } from "../models/list-item";
 
 export class Demo {
-    get inventory(): Array<ListItem<BeerListItem>> {
-        let inventory = new Array<ListItem<BeerListItem>>()
+    get inventory(): Array<BeerListItem> {
+        let inventory = new Array<BeerListItem>()
 
-        const randItems = getRandomArbitrary(1, 20);
+        const randItems = getRandomArbitrary(1, 5);
 
-        for (let i =0; i < randItems; i++) {
+        for (let i = 0; i < randItems; i++) {
             const randIbu = getRandomArbitrary(5, 95);
             const item = {
                 id: i,
@@ -15,7 +14,7 @@ export class Demo {
                 ibu: randIbu, 
                 alcoolPercentage: 4.5, 
                 type: 'Bitter'
-            } as ListItem<BeerListItem>;
+            } as BeerListItem;
 
             inventory.push(item);
         }
