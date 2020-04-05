@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/francisoliviercouture.github.io/distributor/static/css/main.f588f341.chunk.css",
+    "main.js": "/francisoliviercouture.github.io/distributor/static/js/main.ebde8058.chunk.js",
+    "main.js.map": "/francisoliviercouture.github.io/distributor/static/js/main.ebde8058.chunk.js.map",
+    "runtime-main.js": "/francisoliviercouture.github.io/distributor/static/js/runtime-main.91c489b7.js",
+    "runtime-main.js.map": "/francisoliviercouture.github.io/distributor/static/js/runtime-main.91c489b7.js.map",
+    "static/js/2.7a4cbe6d.chunk.js": "/francisoliviercouture.github.io/distributor/static/js/2.7a4cbe6d.chunk.js",
+    "static/js/2.7a4cbe6d.chunk.js.map": "/francisoliviercouture.github.io/distributor/static/js/2.7a4cbe6d.chunk.js.map",
+    "index.html": "/francisoliviercouture.github.io/distributor/index.html",
+    "precache-manifest.a763a916d23ff384855655f3598872b1.js": "/francisoliviercouture.github.io/distributor/precache-manifest.a763a916d23ff384855655f3598872b1.js",
+    "service-worker.js": "/francisoliviercouture.github.io/distributor/service-worker.js",
+    "static/css/main.f588f341.chunk.css.map": "/francisoliviercouture.github.io/distributor/static/css/main.f588f341.chunk.css.map",
+    "static/js/2.7a4cbe6d.chunk.js.LICENSE.txt": "/francisoliviercouture.github.io/distributor/static/js/2.7a4cbe6d.chunk.js.LICENSE.txt",
+    "static/media/ambigue.png": "/francisoliviercouture.github.io/distributor/static/media/ambigue.947205fb.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.91c489b7.js",
+    "static/js/2.7a4cbe6d.chunk.js",
+    "static/css/main.f588f341.chunk.css",
+    "static/js/main.ebde8058.chunk.js"
+  ]
+}
