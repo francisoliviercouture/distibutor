@@ -19,4 +19,4 @@ export class CartService {
 
 
 export const cartService = new CartService();
-export const CartContext = React.createContext({ cartService, addToCart: () => {} });
+export const CartContext = React.createContext({ cartService, addToCart: undefined });

@@ -31,3 +31,5 @@ export function BeerDescriptionPage() {
         </>
     );
 }
+
+export default BeerDescriptionPage;
