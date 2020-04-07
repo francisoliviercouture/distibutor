@@ -1,4 +1,5 @@
 import { BeerListItem } from "../models/beer-list-item";
+import { DistributorModel } from "../models/distributor-model";
 
 export class Demo {
     get inventory(): Array<BeerListItem> {
@@ -21,8 +22,16 @@ export class Demo {
 
         return inventory;
     }
+
+    get distributor(): DistributorModel {
+        return {name: 'Voie Maltée'} as DistributorModel;
+    }
 }
 
 function getRandomArbitrary(min: number, max: number): number {
     return Math.random() * (max - min) + min;
 }
+
+const demoEnv = new Demo();
+
+export default demoEnv;

@@ -1,0 +1,32 @@
+.beer-list-item {
+
+
+    &__header {
+        display: flex;
+
+        &__desc {
+            cursor: pointer;
+        }
+
+        img {
+            max-height: 4rem;
+            margin-right: 0.875rem;
+        }
+    }
+
+    &__options {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        &__button {
+            margin-top: 0.3rem;
+        }
+    }
+
+}
+
+.beer-list-item:hover {
+    background: #eeececb9;
+    transition: .3s;
+}
